@@ -1,5 +1,5 @@
 from datetime import datetime
-
+from calendar import monthrange
 
 data = [
     {'month': '07/2018', 'amount': 200},
@@ -21,16 +21,23 @@ class Budget:
 
         converted = []
         for budget in self.data:
-            c = {
-                'month': datetime.strptime(budget['month'],'%m/%Y' ),
-                'amount': budget['amount']
-            }
-            converted.append(c)
+
+            month = datetime.strptime(budget['month'],'%m/%Y' )
+            _, day_in_month = monthrange(month.year, month.month)
+            average = budget['amount']/day_in_month
+
+            for day in range(1, day_in_month):
+                c = {
+                    'day': datetime(month.year, month.month, day),
+                    'amount': average
+                }
+                converted.append(c)
+
 
         sum = 0
         for convert in converted:
-            if start.month <= convert['month'].month <= end.month:
+            if start <= convert['day'] <= end:
                 print(convert)
                 sum += convert['amount']
 
-        return sum
+        return round(sum)
