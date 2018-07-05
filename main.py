@@ -22,7 +22,7 @@ class Budget:
         converted = []
         for budget in self.data:
 
-            month = datetime.strptime(budget['month'],'%m/%Y' )
+            month = datetime.strptime(budget['month'], '%m/%Y')
             _, day_in_month = monthrange(month.year, month.month)
             average = budget['amount']/day_in_month
 
@@ -32,7 +32,6 @@ class Budget:
                     'amount': average
                 }
                 converted.append(c)
-
 
         sum = 0
         for convert in converted:

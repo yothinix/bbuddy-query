@@ -17,7 +17,7 @@ class QueryBudgetsTest(TestCase):
         self.assertEqual(actual, expected)
 
     def test_query_budget_in_month_should_return_sum_of_amount(self):
-        data = [{ 'month':'07/2018', 'amount':300}]
+        data = [{'month': '07/2018', 'amount': 300}]
         start = datetime(2018, 7, 1)
         end = datetime(2018, 7, 31)
         expected = 300
@@ -28,9 +28,7 @@ class QueryBudgetsTest(TestCase):
         self.assertEqual(actual, expected)
 
     def test_query_budget_for_two_month_should_return_sum_of_amount(self):
-        data = [
-            { 'month':'07/2018', 'amount':300},
-        ]
+        data = [{'month': '07/2018', 'amount': 300}]
         start = datetime(2018, 7, 1)
         end = datetime(2018, 7, 15)
         expected = 145
@@ -40,10 +38,10 @@ class QueryBudgetsTest(TestCase):
 
         self.assertEqual(actual, expected)
 
-    def test_query_budget_when_swap_between_end_and_start_should_throw_error(self):
+    def test_query_budget_when_swap_between_end_and_start_should_throw_error(self): # noqa
         data = [
-            { 'month':'07/2018', 'amount':300},
-            { 'month':'08/2018', 'amount':300},
+            {'month': '07/2018', 'amount': 300},
+            {'month': '08/2018', 'amount': 300}
         ]
         start = datetime(2018, 8, 15)
         end = datetime(2018, 7, 15)
