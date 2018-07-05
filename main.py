@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 data = [
     {'month': '07/2018', 'amount': 200},
     {'month': '08/2018', 'amount': 300},
@@ -13,4 +16,14 @@ class Budget:
         self.data = data
 
     def query(self, start, end):
-        return 0
+        converted = []
+        for budget in self.data:
+            c = { 'month': datetime.strptime(budget['month'],'%m/%Y' ), 'amount': budget['amount']}
+            converted.append(c)
+
+        sum = 0
+        for convert in converted:
+            print( start, end, convert['month'])
+            if start <= convert['month'] < end:
+                sum += convert['amount']
+        return sum
