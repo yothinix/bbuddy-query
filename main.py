@@ -18,12 +18,16 @@ class Budget:
     def query(self, start, end):
         converted = []
         for budget in self.data:
-            c = { 'month': datetime.strptime(budget['month'],'%m/%Y' ), 'amount': budget['amount']}
+            c = {
+                'month': datetime.strptime(budget['month'],'%m/%Y' ),
+                'amount': budget['amount']
+            }
             converted.append(c)
 
         sum = 0
         for convert in converted:
-            print( start, end, convert['month'])
-            if start <= convert['month'] < end:
+            if start.month <= convert['month'].month <= end.month:
+                print(convert)
                 sum += convert['amount']
+
         return sum
