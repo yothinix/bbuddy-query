@@ -26,7 +26,7 @@ class Budget:
             _, day_in_month = monthrange(month.year, month.month)
             average = budget['amount'] / day_in_month
 
-            for day in range(1, day_in_month):
+            for day in range(1, day_in_month + 1):
                 c = {
                     'day': datetime(month.year, month.month, day),
                     'amount': average
