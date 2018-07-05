@@ -40,3 +40,16 @@ class QueryBudgetsTest(TestCase):
         actual = budget.query(start=start, end=end)
 
         self.assertEqual(actual, expected)
+
+    def test_query_budget_when_swap_between_end_and_start_should_throw_error(self):
+        data = [
+            { 'month':'07/2018', 'amount':300},
+            { 'month':'08/2018', 'amount':300},
+        ]
+        start = datetime(2018, 8, 15)
+        end = datetime(2018, 7, 15)
+
+        with self.assertRaises(ValueError):
+            budget = Budget(data=data)
+            budget.query(start=start, end=end)
+

@@ -16,6 +16,9 @@ class Budget:
         self.data = data
 
     def query(self, start, end):
+        if start > end:
+            raise ValueError
+
         converted = []
         for budget in self.data:
             c = {
