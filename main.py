@@ -36,7 +36,6 @@ class Budget:
         sum = 0
         for convert in converted:
             if start <= convert['day'] <= end:
-                print(convert)
                 sum += convert['amount']
 
         return round(sum)
