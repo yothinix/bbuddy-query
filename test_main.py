@@ -63,3 +63,17 @@ class QueryBudgetsTest(TestCase):
         actual = budget.query(start=start, end=end)
 
         self.assertEqual(actual, expected)
+
+    def test_query_budget_between_middle_of_each_month_should_return_sum_of_amount(self):
+        data = [
+            {'month': '07/2018', 'amount': 310},
+            {'month': '08/2018', 'amount': 310},
+        ]
+        start = datetime(2018, 7, 15)
+        end = datetime(2018, 8, 1)
+        expected = 180
+
+        budget = Budget(data=data)
+        actual = budget.query(start=start, end=end)
+
+        self.assertEqual(actual, expected)
