@@ -12,7 +12,7 @@ class QueryBudgetsTest(TestCase):
         expected = 0
 
         budget = Budget(data=data)
-        actual = budget.query(start=start, end=end)
+        actual = budget.query(start_period=start, end_period=end)
 
         self.assertEqual(actual, expected)
 
@@ -23,7 +23,7 @@ class QueryBudgetsTest(TestCase):
         expected = 300
 
         budget = Budget(data=data)
-        actual = budget.query(start=start, end=end)
+        actual = budget.query(start_period=start, end_period=end)
 
         self.assertEqual(actual, expected)
 
@@ -34,7 +34,7 @@ class QueryBudgetsTest(TestCase):
         expected = 145
 
         budget = Budget(data=data)
-        actual = budget.query(start=start, end=end)
+        actual = budget.query(start_period=start, end_period=end)
 
         self.assertEqual(actual, expected)
 
@@ -48,7 +48,7 @@ class QueryBudgetsTest(TestCase):
 
         with self.assertRaises(ValueError):
             budget = Budget(data=data)
-            budget.query(start=start, end=end)
+            budget.query(start_period=start, end_period=end)
 
     def test_query_budget_by_given_before_period_should_return_0(self):
         data = [
@@ -60,7 +60,7 @@ class QueryBudgetsTest(TestCase):
         expected = 0
 
         budget = Budget(data=data)
-        actual = budget.query(start=start, end=end)
+        actual = budget.query(start_period=start, end_period=end)
 
         self.assertEqual(actual, expected)
 
@@ -74,6 +74,6 @@ class QueryBudgetsTest(TestCase):
         expected = 180
 
         budget = Budget(data=data)
-        actual = budget.query(start=start, end=end)
+        actual = budget.query(start_period=start, end_period=end)
 
         self.assertEqual(actual, expected)
